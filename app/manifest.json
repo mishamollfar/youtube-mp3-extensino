@@ -1,0 +1,29 @@
+{
+  "name": "youtube-converter-mp3",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Convert video with youtube to mp3 and download this file.",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+  "permissions": [
+    "*://*",
+    "tabs",
+    "background",
+    "notifications",
+    "storage",
+    "contextMenus"
+  ],
+  "content_scripts": [],
+  "browser_action": {
+    "default_title": "Open converter",
+    "default_icon": "images/icon48.png"
+  }
+}
