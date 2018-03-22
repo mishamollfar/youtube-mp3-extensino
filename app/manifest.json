@@ -14,16 +14,19 @@
     ]
   },
   "permissions": [
-    "*://*",
-    "tabs",
-    "background",
-    "notifications",
-    "storage",
-    "contextMenus"
+    "*://youtube.com/*",
+    "*://*.youtube.com/*"
   ],
-  "content_scripts": [],
-  "browser_action": {
-    "default_title": "Open converter",
-    "default_icon": "images/icon48.png"
-  }
+  "content_scripts": [
+   {
+      "js": [ "scripts/convert.js"],
+      "css" : ["vendor/css/bootstrap.min.css"],
+      "matches": [
+        "*://youtube.com/*",
+        "*://*.youtube.com/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {}
 }

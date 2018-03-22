@@ -1,0 +1,30 @@
+{
+  "name": "youtube-mp3-extensino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack",
+    "build": "npm run webpack -- -p",
+    "typings": "typings",
+    "watch": "concurrently --kill-others \"npm run webpack -- -w\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mishamollfar/youtube-mp3-extensino.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mishamollfar/youtube-mp3-extensino/issues"
+  },
+  "homepage": "https://github.com/mishamollfar/youtube-mp3-extensino#readme",
+  "devDependencies": {
+    "@types/chrome": "0.0.61",
+    "concurrently": "^3.5.1",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12"
+  }
+}
