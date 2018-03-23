@@ -12,9 +12,8 @@ export default class Overlay {
         this.attachOverlay();
     }
 
-    close() {
+    closeOverlay() {
         this.detachOverlay();
-        this.detachChild();
 
         this.closed = true;
         return true;
@@ -47,35 +46,26 @@ export default class Overlay {
 
         body.setAttribute('style', 'overflow: hidden;');
 
-        this.overlayElement.addEventListener('click', this.closeOnClick);
-        body.addEventListener('keydown', this.closeOnPressEscape);
+        this.overlayElement.addEventListener('click', (event) => this.closeOnClick(event));
+        body.addEventListener('keydown', (event) => this.closeOnPressEscape(event));
     }
 
     detachOverlay() {
-       let body = document.body;
+        this.detachChild();
+        let body = document.body;
 
         this.overlayElement.remove();
 
         body.setAttribute('style', 'overflow: auto;');
 
-        this.overlayElement.removeEventListener('click', this.closeOnClick);
-        // body.removeEventListener('keydown', this.closeOnPressEscape);
+        this.overlayElement.removeEventListener('click', (event) => this.closeOnClick(event));
+        body.removeEventListener('keydown', (event) => this.closeOnPressEscape(event));
     }
 
     closeOnClick(event: MouseEvent) {
-        let isClickOutside = function(element) {
-            if (element && element.parentNode) {
-                if (element.parentNode === this.childElement) {
-                    return false;
-                }
-                return isClickOutside(element.parentNode);
-            } else {
-                return true;
-            }
-        };
+        if (event.srcElement && (event.srcElement === this.overlayElement)) {
+            this.closeOverlay();
 
-        if (event.srcElement && isClickOutside(event.srcElement)) {
-            this.close();
             event.preventDefault();
             return false;
         }
@@ -83,7 +73,7 @@ export default class Overlay {
 
     closeOnPressEscape(event: KeyboardEvent) {
         if (event.keyCode === 27) {
-            this.close();
+            this.closeOverlay();
 
             event.preventDefault();
             return false;

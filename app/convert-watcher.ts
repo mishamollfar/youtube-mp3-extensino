@@ -20,7 +20,6 @@ function createDialogBox() {
         text-align: center; border-radius: 5px`);
 
     overlay.attachChild(box);
-    console.log(overlay);
     createInputGroup(box);
 }
 
